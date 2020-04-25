@@ -2,19 +2,23 @@
 #include <vector>
 #include <string>
 
-class Automaton {
-private:
+#include "State.h"
 
-	std::vector<std::vector<int>> statesVector;		// Vector of vectors. Each vector contains all the transitions to 
-													// the other states.
+class Automaton {
 
 
 public:
 	Automaton();
-	Automaton(int states, int elements);
+
+	void addState(State state);
 
 	std::string toString();
 
 	~Automaton();
+
+private:
+
+	std::vector<State> states;		// States vector. 
+
 };
 

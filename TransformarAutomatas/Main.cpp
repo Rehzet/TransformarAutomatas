@@ -64,7 +64,15 @@ bool init() {
 
 
     // AUTOMATON INIT
-    Automaton a(3, 2);
+    Automaton a;
+
+    State q0(false);
+    State q1(true);
+
+    q0.addTransition(Transition(&q1, 0));
+
+    a.addState(q0);
+    a.addState(q1);
 
     std::cout << a.toString() << std::endl;
 

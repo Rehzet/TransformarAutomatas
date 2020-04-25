@@ -1,15 +1,10 @@
 #include "Automaton.h"
 
 Automaton::Automaton() {
-
 }
 
-Automaton::Automaton(int states, int elements) {
-	statesVector.reserve(states);
-
-	for (int i = 0; i < statesVector.size(); i++) {
-		statesVector.at(i).reserve(elements);
-	}
+void Automaton::addState(State state) {
+	states.push_back(new State(false));
 }
 
 std::string Automaton::toString() {

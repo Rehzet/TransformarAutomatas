@@ -147,10 +147,12 @@
     <ClCompile Include="Automaton.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="SDL_Draw.cpp" />
+    <ClCompile Include="State.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Automaton.h" />
     <ClInclude Include="SDL_Draw.h" />
+    <ClInclude Include="State.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

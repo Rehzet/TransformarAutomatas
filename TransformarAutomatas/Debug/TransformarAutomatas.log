@@ -1,5 +1,5 @@
 ﻿  Automaton.cpp
-F:\Proyectos\CPP\ConversorAutomatas\TransformarAutomatas\TransformarAutomatas\Automaton.cpp(10,20): warning C4018: '<': signed/unsigned mismatch
-  Main.cpp
+F:\Proyectos\CPP\ConversorAutomatas\TransformarAutomatas\TransformarAutomatas\Automaton.cpp(10,24): warning C4305: 'argument': truncation from 'int' to 'bool'
+  State.cpp
   Generating Code...
   TransformarAutomatas.vcxproj -> F:\Proyectos\CPP\ConversorAutomatas\TransformarAutomatas\Debug\TransformarAutomatas.exe
