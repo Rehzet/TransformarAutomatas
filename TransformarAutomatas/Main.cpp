@@ -14,7 +14,7 @@ const int SCREEN_HEIGHT = 675;
 
 const char* WINDOW_TITLE = "";
 
-// FUNCTION DECLARATIONS
+// FORWARD DECLARATIONS
 bool init();
 bool loadMedia();
 
