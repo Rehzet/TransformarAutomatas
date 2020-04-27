@@ -17,6 +17,10 @@ public:
 	A word is accepted by the automaton if the last processed letter of the word ends in a final state. */
 	bool checkWord(std::string word);
 
+	/* Returns true if the automaton is deterministic.
+	An automaton is deterministic when the symbols of the transitions of every state are not repeated. */
+	bool isDeterministic();
+
 	std::string toString();
 
 	~Automaton();

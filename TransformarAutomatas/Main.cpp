@@ -79,8 +79,8 @@ bool init() {
 
     std::cout << a.toString() << std::endl;
     */
-    ///
-
+    
+    
     Automaton a;
 
     State q0(false, "q0");
@@ -103,7 +103,50 @@ bool init() {
 
     std::cout << a.checkWord("abba") << "\n";
     std::cout << a.checkWord("abab") << "\n";
-    std::cout << a.checkWord("abbbbbbbbbbbbbbbbbbbbbbaba") << "\n";
+    std::cout << a.checkWord("a") << "\n";
+
+    
+
+   /*
+    Automaton a;
+
+    State q0(false, "q0");
+    State q1(false, "q1");
+    State q2(true, "q2");
+    State q3(true, "q3");
+
+    Transition tq0_1(&q1, 'a');
+    q0.addTransition(tq0_1);
+
+
+    Transition tq1_2(&q2, 'b');
+    Transition tq1_1(&q1, 'b');
+    Transition tq1_3(&q3, 'a');
+    q1.addTransition(tq1_1);
+    q1.addTransition(tq1_2);
+    q1.addTransition(tq1_3);
+
+    Transition tq2_1(&q2, 'b');
+    q2.addTransition(tq2_1);
+
+    a.addState(q0);
+    a.addState(q1);
+    a.addState(q2);
+    a.addState(q3);
+
+    std::cout << a.toString() << "\n";
+
+    std::cout << a.checkWord("abba") << "\n";
+    std::cout << a.checkWord("abab") << "\n";
+    std::cout << a.checkWord("a") << "\n";
+
+    */
+    
+    std::cout << "Deterministic? ";
+    if (a.isDeterministic())
+        std::cout << "True\n";
+    else
+        std::cout << "False\n";
 
     return success;
 }

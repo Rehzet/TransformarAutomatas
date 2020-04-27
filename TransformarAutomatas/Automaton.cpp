@@ -1,4 +1,7 @@
+#include <set>
+
 #include "Automaton.h"
+#include "Constants.h"
 
 Automaton::Automaton() {
 }
@@ -26,6 +29,23 @@ bool Automaton::checkWordRecursive(State state, std::string word) {
 	}
 }
 
+bool Automaton::isDeterministic() {
+
+	for (State state : states) {
+
+		std::set<char> valueRepeatedChecker;
+		for (Transition transition : state.getTransitions()) {
+			if (transition.getValue() == EMPTY_WORD)
+				return false;
+			else {
+				if (!valueRepeatedChecker.insert(transition.getValue()).second)
+					return false;
+			}
+		}
+	}
+
+	return true;
+}
 
 
 std::string Automaton::toString() {
