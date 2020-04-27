@@ -1,18 +1,23 @@
 #pragma once
 
+#include <string>
 //#include "State.h"
 class State;
+
 
 class Transition {
 
 public:
-	Transition(State* nextState, int value);
+
+	Transition(State *nextState, char value);
 	~Transition();
 
-	const int EMPTY_WORD = -1;
+	State* getNextState();
+	char getValue();
+
 
 private:
 	State* nextState;
-	int value;
+	char value;
 };
 

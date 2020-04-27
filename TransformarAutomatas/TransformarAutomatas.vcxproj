@@ -152,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Automaton.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="SDL_Draw.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="Transition.h" />

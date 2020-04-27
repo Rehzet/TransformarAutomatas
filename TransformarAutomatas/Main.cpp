@@ -6,6 +6,7 @@
 #include <cmath>
 
 #include "Automaton.h"
+#include "Constants.h"
 
 
 // CONSTANTS
@@ -64,18 +65,45 @@ bool init() {
 
 
     // AUTOMATON INIT
-    Automaton a;
+   /* Automaton a;
 
-    State q0(false);
-    State q1(true);
+    State q0(false, "q0");
+    State q1(true, "q1");
 
-    q0.addTransition(Transition(&q1, 0));
+    //Transition t1(&q1, "a");
+
+    q0.addTransition(&q1, "a");
 
     a.addState(q0);
     a.addState(q1);
 
     std::cout << a.toString() << std::endl;
+    */
+    ///
 
+    Automaton a;
+
+    State q0(false, "q0");
+    State q1(false, "q1");
+    State q2(true, "q2");
+
+    Transition tq0_1(&q1, 'a');
+    q0.addTransition(tq0_1);
+
+    Transition tq1_1(&q1, 'b');
+    Transition tq1_2(&q2, 'a');
+    q1.addTransition(tq1_1);
+    q1.addTransition(tq1_2);
+
+    a.addState(q0);
+    a.addState(q1);
+    a.addState(q2);
+
+    std::cout << a.toString() << "\n";
+
+    std::cout << a.checkWord("abba") << "\n";
+    std::cout << a.checkWord("abab") << "\n";
+    std::cout << a.checkWord("abbbbbbbbbbbbbbbbbbbbbbaba") << "\n";
 
     return success;
 }
