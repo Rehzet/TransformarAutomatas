@@ -1,6 +1,5 @@
 #include "State.h"
 
-
 // ### CONSTRUCTORS AND DESTRUCTOR ###
 
 
@@ -18,17 +17,13 @@ State::~State() {
 
 // ### FUNCTIONS ###
 
-void State::addTransition(Transition transition) {
-	transitions.push_back(transition);
+void State::addTransition(State *nextState, char value) {
+
+
+	transitions.push_back(std::make_pair(nextState, value));
 }
 
-void State::addTransition(State* state, char value) {
-	Transition t(state, value);
-
-	transitions.push_back(t);
-}
-
-std::vector<Transition> State::getTransitions() {
+std::vector<std::pair<State*, char>> State::getTransitions() {
 	return transitions;
 }
 
@@ -38,19 +33,17 @@ bool State::hasTransitions() {
 
 std::string State::toString() {
 
-	std::string str = getName() + ": {\n";
+	std::string str = getName() + ": \n";
 
 	if (isFinalState()) {
 		str += "    #Final state#\n";
 	}
 
-	for (Transition transition : transitions) {
+	for (std::pair<State*, char> transition : transitions) {
 		str += "    "; 
-		str += transition.getValue();
-		str += " --> " + transition.getNextState()->getName() + "\n";
+		str += transition.second;
+		str += " --> " + transition.first->getName() + "\n";
 	}
-
-	str += "}\n";
 
 	return str;
 }

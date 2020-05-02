@@ -3,7 +3,6 @@
 #include <vector>
 #include <string>
 
-#include "Transition.h"
 
 class State {
 
@@ -14,14 +13,11 @@ public:
 	name: just the name of the state. */
 	State(bool finalState, std::string name);
 	
-	/* Adds a transition to the transitions vector. */
-	void addTransition(Transition transition);
-
 	/* Creates a transition and adds it to the transitions vector. */
-	void addTransition(State* state, char value);
+	void addTransition(State *nextState, char value);
 
 	/* Returns the transitions vector. */
-	std::vector<Transition> getTransitions();
+	std::vector<std::pair<State*, char>> getTransitions();
 
 	/* Checks if the transitions vector is empty. */
 	bool hasTransitions();
@@ -38,10 +34,10 @@ public:
 
 private:
 	
-	bool finalState;
-	std::string name;
+	bool finalState = false;
+	std::string name = "";
 
-	std::vector<Transition> transitions;
+	std::vector<std::pair<State*, char>> transitions;
 
 };
 

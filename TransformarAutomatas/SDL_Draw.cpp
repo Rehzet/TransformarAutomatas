@@ -9,7 +9,7 @@ void SDL_DrawEllipse(SDL_Renderer* r, int x0, int y0, int radiusX, int radiusY)
     //drew  28 lines with   4x4  circle with precision of 150 0ms
     //drew 132 lines with  25x14 circle with precision of 150 0ms
     //drew 152 lines with 100x50 circle with precision of 150 3ms
-    const int prec = 11; // precision value; value of 1 will draw a diamond, 27 makes pretty smooth circles.
+    const int prec = 15; // precision value; value of 1 will draw a diamond, 27 makes pretty smooth circles.
     float theta = 0;     // angle that will be increased each loop
 
     //starting point

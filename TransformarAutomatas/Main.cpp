@@ -5,15 +5,13 @@
 #include <iostream>
 #include <cmath>
 
-#include "Automaton.h"
+#include "SDL_Automaton.h"
 #include "Constants.h"
 
 
-// CONSTANTS
-const int SCREEN_WIDTH = 675;
-const int SCREEN_HEIGHT = 675;
 
-const char* WINDOW_TITLE = "";
+
+const char* WINDOW_TITLE = "Automaton";
 
 // FORWARD DECLARATIONS
 bool init();
@@ -32,6 +30,14 @@ bool pause;
 
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
+
+Automaton* a = NULL;
+SDL_Automaton* sdla = NULL;
+
+State q0(false, "q0");
+State q1(false, "q1");
+State q2(true, "q2");
+State q3(true, "q3");
 
 bool init() {
 
@@ -80,30 +86,30 @@ bool init() {
     std::cout << a.toString() << std::endl;
     */
     
-    
-    Automaton a;
+      
 
-    State q0(false, "q0");
-    State q1(false, "q1");
-    State q2(true, "q2");
 
-    Transition tq0_1(&q1, 'a');
-    q0.addTransition(tq0_1);
 
-    Transition tq1_1(&q1, 'b');
-    Transition tq1_2(&q2, 'a');
-    q1.addTransition(tq1_1);
-    q1.addTransition(tq1_2);
+    q0.addTransition(&q1, 'a');
 
-    a.addState(q0);
-    a.addState(q1);
-    a.addState(q2);
+    q1.addTransition(&q1, 'b');
+    q1.addTransition(&q2, 'a');
+    q1.addTransition(&q3, 'a');
 
-    std::cout << a.toString() << "\n";
+    a = new Automaton();
 
-    std::cout << a.checkWord("abba") << "\n";
-    std::cout << a.checkWord("abab") << "\n";
-    std::cout << a.checkWord("a") << "\n";
+    a->addState(q0);
+    a->addState(q1);
+    a->addState(q2);
+    a->addState(q3);
+
+    sdla = new SDL_Automaton(*a);
+
+    std::cout << a->toString() << "\n";
+
+    std::cout << a->checkWord("abba") << "\n";
+    std::cout << a->checkWord("abab") << "\n";
+    std::cout << a->checkWord("a") << "\n";
 
     
 
@@ -143,7 +149,7 @@ bool init() {
     */
     
     std::cout << "Deterministic? ";
-    if (a.isDeterministic())
+    if (a->isDeterministic())
         std::cout << "True\n";
     else
         std::cout << "False\n";
@@ -160,8 +166,11 @@ bool loadMedia() {
 void close() {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
+
     window = NULL;
     renderer = NULL;
+    sdla = NULL;
+    a = NULL;
 
     SDL_Quit();
 }
@@ -195,8 +204,14 @@ void events() {
 void gameLoop() {
     
     SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+
+    
+    sdla->draw(*renderer);
+
+    /*
     SDL_DrawEllipse(renderer, 300, 300, 200, 300);
     SDL_DrawCircle(renderer, 100, 190, 143);
+    */
 
 
 }

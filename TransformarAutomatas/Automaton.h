@@ -4,14 +4,22 @@
 
 #include "State.h"
 
+ 
+
+
 class Automaton {
 
 
 public:
+
+
 	Automaton();
 
 	/* Adds a state to the automaton's states vector. */
 	void addState(State state);
+
+	/* Returns states vector. */
+	std::vector<State> getStates();
 
 	/* This function checks if the word is accepted by the automaton.
 	A word is accepted by the automaton if the last processed letter of the word ends in a final state. */
