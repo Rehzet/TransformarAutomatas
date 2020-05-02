@@ -1,5 +1,8 @@
-﻿  SDL_Automaton.cpp
+﻿  Main.cpp
 F:\Proyectos\CPP\ConversorAutomatas\TransformarAutomatas\TransformarAutomatas\Constants.h(3,32): warning C4566: character represented by universal-character-name '\u03B5' cannot be represented in the current code page (1252)
-F:\Proyectos\CPP\ConversorAutomatas\TransformarAutomatas\TransformarAutomatas\SDL_Automaton.cpp(25,13): warning C4150: deletion of pointer to incomplete type '_TTF_Font'; no destructor called
+  SDL_Automaton.cpp
+F:\Proyectos\CPP\ConversorAutomatas\TransformarAutomatas\TransformarAutomatas\Constants.h(3,32): warning C4566: character represented by universal-character-name '\u03B5' cannot be represented in the current code page (1252)
+F:\Proyectos\CPP\ConversorAutomatas\TransformarAutomatas\TransformarAutomatas\SDL_Automaton.cpp(23,13): warning C4150: deletion of pointer to incomplete type '_TTF_Font'; no destructor called
 C:\SDL2-2.0.12_VC\include\SDL_ttf.h(98): message : see declaration of '_TTF_Font'
+  Generating Code...
   TransformarAutomatas.vcxproj -> F:\Proyectos\CPP\ConversorAutomatas\TransformarAutomatas\Debug\TransformarAutomatas.exe

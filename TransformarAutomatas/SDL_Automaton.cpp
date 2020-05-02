@@ -2,8 +2,6 @@
 #include "SDL_Automaton.h"
 #include "SDL_Draw.h"
 
-// TODO: Crear cuadrícula para colocar los estados e impedir así que dos o más estados estén en el mismo sitio.
-
 SDL_Automaton::SDL_Automaton(Automaton automaton) {
 	this->automaton = automaton;
 
@@ -34,10 +32,6 @@ void SDL_Automaton::draw(SDL_Renderer &renderer) {
 
 void SDL_Automaton::drawRecursive(SDL_Renderer& renderer, State* state, SDL_Point position, SDL_Point lastPosition) {
 
-	//SDL_Point circlePosition = { xIndex * 300 + 100 , DEFAULT_HEIGHT};
-	//SDL_Point nextCirclePosition = { (xIndex + 1) * 300 + 100 , DEFAULT_HEIGHT + y};
-
-
 	if (state->isFinalState()) {
 		SDL_DrawCircle(&renderer, grid[position.x][position.y].center.x, grid[position.x][position.y].center.y, RADIUS - 10);
 	}
@@ -59,27 +53,7 @@ void SDL_Automaton::drawRecursive(SDL_Renderer& renderer, State* state, SDL_Poin
 		}
 		else {
 			drawSelfTransition(renderer, { lastPosition.x, lastPosition.y-1 });
-			//drawRecursive(renderer, transition.first, lastPosition, lastPosition);
 		}
-		
-		/*
-		if (xIndex != lastXIndex) {
-			if (state->getName() != transition.first->getName()) {
-
-				drawTransition(renderer, { circlePosition.x , circlePosition.y}, {nextCirclePosition.x, nextCirclePosition.y});
-
-				if(transition.first != NULL)
-					drawRecursive(renderer, transition.first, xIndex + 1, xIndex, y);
-
-				y += 100;
-				nextCirclePosition.y += y;
-				
-			}
-			else {
-				drawSelfTransition(renderer, {circlePosition.x, circlePosition.y + y});
-				drawRecursive(transition.first, xIndex, xIndex, y, renderer);
-			}
-		}*/
 	}
 
 }
