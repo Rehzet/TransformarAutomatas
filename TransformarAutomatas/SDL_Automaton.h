@@ -16,6 +16,14 @@ public:
 	void draw(SDL_Renderer& renderer);
 
 private:
+
+	struct gridSquare {
+		int x;
+		int y;
+		int size = RADIUS * 2;
+		SDL_Point center = {x + RADIUS, y + RADIUS};
+		bool occupied = false;
+	};
 	
 	static const int RADIUS = 40;
 	static const int DEFAULT_HEIGHT = SCREEN_HEIGHT / 2 - RADIUS / 2;
@@ -23,9 +31,9 @@ private:
 	static const int GRID_WIDTH = SCREEN_WIDTH / (RADIUS * 2);
 	static const int GRID_HEIGHT = SCREEN_HEIGHT / (RADIUS * 2);
 
-	void drawRecursive(State *state, int xIndex, int lastXIndex, int y, SDL_Renderer& renderer);
+	void drawRecursive(SDL_Renderer& renderer, State *state, SDL_Point position, SDL_Point lastPosition);
 
-	void drawTransition(SDL_Renderer &renderer, SDL_Point statePosition, SDL_Point nextStatePosition);
+	void drawTransition(SDL_Renderer &renderer, SDL_Point &statePosition, SDL_Point nextStatePosition);
 	void drawSelfTransition(SDL_Renderer &renderer, SDL_Point statePosition);
 
 	void showGrid(SDL_Renderer &renderer);
@@ -34,6 +42,6 @@ private:
 
 	TTF_Font* font = NULL;
 
-	bool grid[GRID_WIDTH][GRID_HEIGHT];
+	gridSquare grid[GRID_WIDTH][GRID_HEIGHT];
 };
 
